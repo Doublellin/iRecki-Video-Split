@@ -1,0 +1,66 @@
+﻿<script>
+function changesrc(){
+   
+    document.getElementById('Taipei1').src='ScreenImage.jpg?id=1&location=Taipei&'+new Date;
+    document.getElementById('Taipei2').src='ScreenImage.jpg?id=2&location=Taipei&'+new Date;
+    document.getElementById('CameraTaipei1').src='CameraImage.jpg?id=1&location=Taipei&'+new Date;
+    document.getElementById('CameraTaipei2').src='CameraImage.jpg?id=2&location=Taipei&'+new Date;
+
+	document.getElementById('Hsinchu1').src='ScreenImage.jpg?id=1&location=Hsinchu&'+new Date;
+	document.getElementById('Hsinchu2').src='ScreenImage.jpg?id=2&location=Hsinchu&'+new Date;
+	document.getElementById('Hsinchu3').src='ScreenImage.jpg?id=3&location=Hsinchu&'+new Date;
+	document.getElementById('Hsinchu4').src='ScreenImage.jpg?id=4&location=Hsinchu&'+new Date;
+	document.getElementById('CameraHsinchu1').src='CameraImage.jpg?id=1&location=Hsinchu&'+new Date;
+	document.getElementById('CameraHsinchu2').src='CameraImage.jpg?id=2&location=Hsinchu&'+new Date;
+	document.getElementById('CameraHsinchu3').src='CameraImage.jpg?id=3&location=Hsinchu&'+new Date;
+	document.getElementById('CameraHsinchu4').src='CameraImage.jpg?id=4&location=Hsinchu&'+new Date;
+
+
+
+    window.setTimeout(changesrc,1000);
+}
+window.onload=function(){
+    changesrc();
+}
+</script>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<center>
+<hr>
+<h1>台北</h1>
+
+<img id="Taipei1" width="640" height="360" />
+<img id="Taipei2" width="640" height="360" />
+<br />
+<img id="CameraTaipei1" width="640" height="360" />
+<img id="CameraTaipei2" width="640" height="360" />
+
+<br>
+<br>
+<br>
+<hr>
+<h1>新竹</h1>
+
+<img id="Hsinchu1" width="640" height="360" />
+<img id="Hsinchu2" width="640" height="360" />
+<br />
+<img id="Hsinchu3" width="640" height="360" />
+<img id="Hsinchu4" width="640" height="360" />
+<br />
+<img id="CameraHsinchu1" width="640" height="360" />
+<img id="CameraHsinchu2" width="640" height="360" />
+<br />
+<img id="CameraHsinchu3" width="640" height="360" />
+<img id="CameraHsinchu4" width="640" height="360" />
+
+</center>
+<!-- /ScreenImage.jpg?id=2&location=Taipei -->
+</body>
+</html>
+ -->
+
+</html>

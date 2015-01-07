@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title class="Title"></title>
+</head>
+<body>
+
+<center>
+
+<h1><div class="RtnMsgTitle"></div></h1>
+
+<br><br><hr><br>
+
+<table width="700" border="1">
+	<tr><td width="200" align="center">交易編號</td><td class="MerchantTradeNo" align="center"></td></tr>
+	<tr><td width="200" align="center">儲值狀態</td><td class="RtnMsg" align="center"></td></tr>	
+	<tr><td width="200" align="center">儲值金額</td><td class="TradeAmt" align="center"></td></tr>	
+	<tr><td width="200" align="center">儲值日期</td><td class="TradeDate" align="center"></td></tr>
+	<tr><td width="200" align="center">儲值方式</td><td class="PaymentType" align="center"></td></tr>
+</table>
+
+</center>
+
+</body>
+</html>
+
+<!-- JavaScript ========================================================================== -->
+
+<script src="jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var PaymentType = getParameter("PaymentType");
+var RtnMsg = getParameter("RtnMsg");
+var TradeAmt = getParameter("TradeAmt");
+var TradeDate = getParameter("TradeDate");
+var MerchantTradeNo = getParameter("MerchantTradeNo");
+
+
+$('.MerchantTradeNo').append(MerchantTradeNo);
+$('.TradeAmt').append(TradeAmt+" $");
+$('.TradeDate').append(TradeDate);
+
+
+if(PaymentType == "Credit_CreditCard"){
+	$('.PaymentType').append("信用卡");
+}else{
+	$('.PaymentType').append(PaymentType);
+}
+
+var suc = "成功";
+var err = "失敗";
+var other = "交易錯誤，請通知管理者，確認是否扣款。";
+
+if(RtnMsg == "Succeeded"){
+	$('.Title').append(suc);
+	$('.RtnMsg').append(suc);
+	$('.RtnMsgTitle').append("儲值"+suc);
+} else if(RtnMsg == "ERROR"){
+	$('.Title').append(err);
+	$('.RtnMsg').append(err);
+	$('.RtnMsgTitle').append("儲值"+err);
+}else{
+	$('.Title').append(other);
+	$('.RtnMsg').append(other);
+	$('.RtnMsgTitle').append(other);
+}
+
+
+function getParameter(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+</script>

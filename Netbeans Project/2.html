@@ -1,0 +1,130 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+		<center>
+			<h1>會員資訊</h1>
+			<hr>
+			<br>
+			<table class="table1" border="1"></table>
+			<br>
+			<br>
+			<br>
+			<table border="0" width="200">
+				<tr>
+					<td align="center"><button onclick="Back()">上一頁</button></td>
+					<td align="center" class="page"></td>
+					<td align="center"><button onclick="Next()">下一頁</button></td>
+				</tr>
+			</table>
+			
+			
+			
+		</center>
+	</body>
+</html>
+
+<!-- JavaScript ========================================================================== -->
+
+<script src="/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+
+var page = parseInt(getParameter("page"));
+
+$('.page').append(page);
+
+$.getJSON("/UserData?page="+page, my);
+
+
+
+function my(data){
+	var m = data.Data;
+
+	var newTable = "<tr>";
+				newTable += "<td width='100'>ID</td>";
+				newTable += "<td>用戶</td>";
+				newTable += "<td>IP</td>";
+				newTable += "<td>購買日期</td>";
+				newTable += "<td>購買金額</td>";
+				newTable += "<td>模式</td>";
+				newTable += "<td>地點</td>";
+				newTable += "<td>開始時間</td>";
+				newTable += "<td>結束時間</td>";
+				newTable += "<td>上傳檔案名稱</td>";
+				newTable += "<td>檔案大小</td>";
+				newTable += "<td>檔案編碼</td>";
+				newTable += "<td>上傳路徑</td>";
+				newTable += "<td>購買完成</td>";
+				newTable += "<td>上傳完成</td>";
+				newTable += "<td>編碼完成</td>";
+				newTable += "<td>購買平板 ID</td>";
+				newTable += "<td>購買資訊</td>";
+				newTable += "<td>上傳資訊</td>";
+				newTable += "<td>編碼資訊</td>";
+				newTable += "</tr>";
+
+	$('.table1').empty();
+	$('.table1').append(newTable);
+
+	for (i = 0; i < m.length; i++) {
+		var d = m[i];
+		$.each(data, function(i, field){
+			var str = "<tr>";
+			str += "<td>"+d.id+"</td>";
+			str += "<td>"+d.is_facebook_user+"</td>";
+			str += "<td>"+d.ip+"</td>";
+			str += "<td>"+d.purchase_date+"</td>";
+			str += "<td>"+d.price+"</td>";
+			str += "<td>"+d.playmode+"</td>";
+			str += "<td>"+d.location+"</td>";			
+			str += "<td>"+d.start_play_time+"</td>";
+			str += "<td>"+d.end_play_time+"</td>";
+			str += "<td>"+d.file_name.replace(/\,/g,"<br>")+"</td>";
+			str += "<td>"+d.file_size+"</td>";
+			str += "<td>"+d.file_target_encod+"</td>";
+			str += "<td>"+d.file_dir+"</td>";
+			str += "<td>"+d.is_purchase_finish+"</td>";			
+			str += "<td>"+d.is_upload_finish+"</td>";			
+			str += "<td>"+d.is_encoding_finish+"</td>";
+
+			str += "<td>"+ (d.choose_table_id_1 == "t" ? 1 : "")
+			+(d.choose_table_id_2 == "t" ? ", 2" : "")
+			+(d.choose_table_id_3 == "t" ? ", 3" : "")
+			+(d.choose_table_id_4 == "t" ? ", 4" : "")
+			+(d.choose_table_id_5 == "t" ? ", 5" : "")
+			+(d.choose_table_id_6 == "t" ? ", 6" : "")
+			+"</td>";
+			
+			str += "<td>"+d.purchase_log+"</td>";
+			str += "<td>"+d.upload_log+"</td>";
+			str += "<td>"+d.encoding_log+"</td>";
+			
+			str += "</tr>";
+			
+			$('.table1').append(str);
+   		 });
+	}	
+}
+
+function getParameter(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function Back(){	
+	if(page>1){
+		page--;
+		window.location="/2.html?page="+page;
+	}	
+}
+
+function Next() {
+	page++;
+	window.location="/2.html?page="+page;
+}
+
+</script>
+

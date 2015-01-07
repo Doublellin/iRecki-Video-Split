@@ -1,0 +1,65 @@
+create database ireckidb;
+
+\c ireckidb;
+
+create table data(
+        id			text,
+        is_facebook_user	boolean,
+        ip			text,
+        purchase_date		timestamp,
+        price			real,
+        location		text,
+        playMode		text,
+        start_play_time		timestamp,
+        end_play_time		timestamp,
+        file_name		text,		-- 可能是陣列
+        file_size		text,		-- 可能是陣列
+        file_target_encod       	text,                               -- 上傳後編碼成哪種格式
+        file_dir                             text,                              -- 上傳後存放的資料夾
+        is_purchase_finish	boolean,
+        purchase_log		text,
+        is_upload_finish	boolean,
+        upload_log		text,
+        is_encoding_finish	boolean,
+        encoding_log		text,
+        choose_table_id_1	boolean,
+        choose_table_id_2	boolean,
+        choose_table_id_3	boolean,
+        choose_table_id_4	boolean,
+        choose_table_id_5	boolean,
+        choose_table_id_6	boolean
+);
+
+/*
+	之後增加開始上傳時間、結束上傳時間、開始編碼時間、結束編碼時間
+*/
+
+CREATE TABLE users(
+	id			text,
+                   password                                         text,
+	is_facebook_user	boolean,
+	name			text,
+	sign_up_date		timestamp,
+	sign_up_ip		text,
+	point			int
+);
+
+CREATE TABLE Trade(
+        id                                                   text,
+        is_facebook_user                         boolean,
+        merchant_id                                 text,
+        merchant_trade_no                      text,
+        payment_date                               text,
+        payment_type                               text,
+        payment_type_charge_fee           text,
+        rtn_code                                        text,
+        rtn_msg                                         text,
+        simulate_paid                               text,
+        trade_amt                                     text,
+        trade_date                                    text,
+        trade_no                                       text,
+        check_mac_value                         text
+);
+
+
+

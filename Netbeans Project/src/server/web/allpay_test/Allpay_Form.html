@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<style type="text/css">
+	body{
+		background-image:url(a.jpg);
+		background-size:cover;
+	}
+	h1{
+		text-align:center;	
+	}
+</style>
+<script type="text/javascript">
+	function check(){
+		
+		<!-- 若<form>屬性name值為form1裡的文字方塊值為空字串，則顯示「未輸入姓名」 -->
+		if(form1.ItemName.value == "") 
+		{
+				alert("未輸入商品名稱!");
+		}
+		<!-- 若<form>屬性name值為form1裡的文字方塊與下拉式選單值為空字串或是沒有選擇月或日，則顯示「未輸入完整生日日期」 -->
+		else if(form1.TotalAmount.value=="")
+		{
+			
+				alert("未輸入交易金額!");
+		}
+		else if(form1.TotalAmount.value<=0)
+		{
+				alert("交易金額輸入不正確，請重新輸入!");
+		}
+		<!-- 若<form>屬性name值為form1裡的核取方塊沒有選擇，則顯示「未選擇性別」 -->
+		else if(form1.TradeDesc.value=="")
+		{
+				alert("交易描述未輸入!");
+		}
+		<!-- 若以上條件皆不符合，也就是表單資料皆有填寫的話，則將資料送出 -->
+		else{ 
+			if(confirm("若確定交易，請點選[確定]選項。"))
+				form1.submit();
+		}
+	 }
+</script>
+</head>
+
+<body>
+	<div id="loadingImg" style="display:none">loading...</div>
+    <div align="center">   
+  	<a href="http://chenghsi.com/" style="text-decoration:none;" target="_blank"><img src="logo.png" style="width:300px;height:50px;"/> <font size="7" color="#00FF00">丞希綠色資訊</font> </a>
+    </div>
+    <h1>金流介接 測試訂單 base on V 1.0.7 (導向Allpay_form_process.jsp)</h1>
+  	<br>
+    <div style=" margin-left:400px;">
+<form id="form1" name="form1" method="post" action="/TradeOrder"  enctype = "application/x-www-form-urlencoded" target="_blank">
+    	<b>1. 商品名稱 Varchar(200) 如果商品名稱有多筆，需在金流選擇頁一行一行顯示商品名稱的話，商品名稱請以井號分隔(#) </b><br>
+    		ItemName : <input type="text" id="ItemName" name="ItemName" size=60>
+            <br>
+    		<br>
+    	<b>2. 交易金額 Money </b><br>
+    		TotalAmount : <input type="text" id="TotalAmount" name="TotalAmount">
+    		<br>
+    		<br>
+    	<b>3. 交易描述 Varchar(200) </b><br>
+    		TradeDesc : <input type="text" id="TradeDesc" name="TradeDesc">
+    		<br>
+    		<br>
+    	
+    		
+    	<b>4. 選擇預設付款方式 Varchar(20) </b><br>
+    		ChoosePayment : 
+    		<select id="ChoosePayment" name="ChoosePayment">
+    			<option value="Credit">Credit:信用卡</option>
+    			<option value="WebATM" selected>WebATM:網路ATM</option>
+                        <!-- //後續要在歐付寶設定才可開啟下面功能
+                        <option value="ATM">ATM:自動櫃員機</option>
+	    		<option value="CVS">CVS:超商代碼</option>
+	    		<option value="BARCODE">BARCODE:超商條碼</option>
+	    		<option value="Alipay">Alipay: 支付寶</option>
+	    		<option value="Tenpay">Tenpay: 財付通</option>
+	    		<option value="TopUpUsed">TopUpUsed:儲值消費</option>
+                        -->
+	    	</select>
+    		<div id="addition"></div>
+            <br>
+               <!-- //預設關閉，此項目需在後台操作
+    	<b>5. 廠商交易編號 (廠商交易編號不可重覆。英數字。) Varchar(20) </b><br>
+    		MerchantTradeNo : <input type="text" id="MerchantTradeNo" name="MerchantTradeNo">
+    		<br>
+    		<br>
+                    -->
+                <!-- //預設關閉，此項目需在後台操作
+    		<br>                 
+	<b>6. 廠商交易時間 Varchar(20) </b><br>
+    		MerchantTradeDate : <input type="text" id="MerchantTradeDate" name="MerchantTradeDate">
+            <br>
+    		<br>
+                -->
+			<!--
+            <input type="button" style="width:100px;" id="submit" name="submit" onclick="check()" value="(確定交易)"/>
+            <input type="reset"  style="width:100px; margin-left:50px" value="重設" />
+            -->
+            <input type="button"  style="width:100px;" value="確定交易" onClick="check()" /> &nbsp;&nbsp;&nbsp;
+<input type="reset"  style="width:100px; margin-left:30px;"value="重設資料" />
+		</form>
+  </body>
+</html>
