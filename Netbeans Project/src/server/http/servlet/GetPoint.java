@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import server.database.SQL;
+import server.ui.Log;
 
 /**
  *
@@ -23,6 +24,9 @@ public class GetPoint extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
+        
+        
+        
         String id = request.getParameter("id");
         String IsFacebookUser = request.getParameter("IsFacebookUser");
         SQL sql = new SQL();

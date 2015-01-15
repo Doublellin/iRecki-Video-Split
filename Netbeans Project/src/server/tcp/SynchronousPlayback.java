@@ -7,14 +7,9 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import server.database.SQL;
 //import static server.tcp.Synchronous.hsinchu;
 
 public class SynchronousPlayback implements Runnable {
@@ -109,13 +104,13 @@ class Synchronous implements Runnable {
 //            }
 
             if (taipei.size() == 2) {
+                PrintWriter w = (PrintWriter) taipei.get("1");
+                PrintWriter w2 = (PrintWriter) taipei.get("2");                
                 try {
                     Thread.sleep(3000);
                 } catch (InterruptedException ex) {
                     System.err.println("# Synchronous Class : " + ex.getMessage());
-                }
-                PrintWriter w = (PrintWriter) taipei.get("1");
-                PrintWriter w2 = (PrintWriter) taipei.get("2");
+                }                
                 w.println("y");
                 w2.println("y");
                 taipei.clear();

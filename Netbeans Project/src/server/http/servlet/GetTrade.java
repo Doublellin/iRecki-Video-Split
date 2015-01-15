@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import server.database.SQL;
+import server.ui.Log;
 
 /**
  *
@@ -27,6 +28,7 @@ public class GetTrade extends HttpServlet {
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+                
         res.setContentType("text/html;charset=UTF-8");
 
         String id = req.getParameter("id");

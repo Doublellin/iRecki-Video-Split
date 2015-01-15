@@ -28,6 +28,35 @@ import server.http.servlet.allpay.TradeResult;
 public class HttpServer implements Runnable {
 
     public static Server SERVER = new Server(Config.HTTP_SERVER_PORT);
+    
+    public static void start(){        
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    SERVER.start();
+                    Config.SERVER_IS_RUN = true;                    
+                    SERVER.join();
+                } catch (Exception ex) {
+                    System.out.println("伺服器狀態：啟動時發生錯誤  " + ex);
+                }
+            }
+        }).start();
+    }
+
+    public static void stop() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    SERVER.stop();
+                    Config.SERVER_IS_RUN = false;
+                } catch (Exception ex) {
+                    System.out.println("伺服器狀態：停止時發生錯誤  " + ex);
+                }
+            }
+        }).start();
+    }
 
     @Override
     public void run() {
@@ -68,7 +97,7 @@ public class HttpServer implements Runnable {
         context.addServlet(new ServletHolder(new GetPoint()), "/GetPoint");
         context.addServlet(new ServletHolder(new GetTimeIDStatus()), "/GetTimeIDStatus");
         context.addServlet(new ServletHolder(new GetTrade()), "/GetTrade");
-        
+
         HandlerList hl = new HandlerList();
         hl.addHandler(context);
 

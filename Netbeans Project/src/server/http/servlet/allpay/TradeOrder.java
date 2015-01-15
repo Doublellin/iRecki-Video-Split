@@ -47,9 +47,9 @@ public class TradeOrder extends HttpServlet {
             String hash_iv = "n1mzdG1DeYiMIcR0";
             String merchant_id = "1064705";
             String payment_type = "aio";
-            String return_url = "http://" + server.config.Config.HTTP_SERVER_IP + ":" + server.config.Config.HTTP_SERVER_PORT + "/src/server/web/allpay_test/Allpay_Form_ReturnURL.jsp";
+            String return_url = "http://" + server.config.Config.HTTP_SERVER_PUBLIC_IP + ":" + server.config.Config.HTTP_SERVER_PORT + "/src/server/web/allpay_test/Allpay_Form_ReturnURL.jsp";
             String client_back_url = "http://www.allpay.com.tw/Shopping/Detail";
-            String orderResultURL = "http://" + server.config.Config.HTTP_SERVER_IP + ":" + server.config.Config.HTTP_SERVER_PORT + "/TradeResult";
+            String orderResultURL = "http://" + server.config.Config.HTTP_SERVER_PUBLIC_IP + ":" + server.config.Config.HTTP_SERVER_PORT + "/TradeResult";
 
             String encode_str
                     = "HashKey=" + hash_key
